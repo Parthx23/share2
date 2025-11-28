@@ -1,0 +1,9 @@
+{
+  "hosting": {
+    "source": ".",
+    "use": "@firebaseextended/action-hosting-deploy"
+  },
+  "functions": {
+    "source": "."
+  }
+}
