@@ -23,7 +23,12 @@ export async function POST(request: NextRequest) {
     const token = generateToken()
     const storageRef = ref(storage, `files/${token}`)
     
-    await uploadBytes(storageRef, file)
+    const arrayBuffer = await file.arrayBuffer()
+    const uint8Array = new Uint8Array(arrayBuffer)
+    
+    await uploadBytes(storageRef, uint8Array, {
+      contentType: file.type
+    })
     const downloadURL = await getDownloadURL(storageRef)
     
     await addDoc(collection(db, 'shares'), {
@@ -42,6 +47,7 @@ export async function POST(request: NextRequest) {
       url: `${request.nextUrl.origin}/${token}`
     })
   } catch (error) {
+    console.error('Upload error:', error)
     return NextResponse.json({ error: 'Upload failed' }, { status: 500 })
   }
 }

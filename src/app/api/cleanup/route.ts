@@ -11,8 +11,11 @@ export async function POST() {
     const deletePromises = querySnapshot.docs.map(doc => deleteDoc(doc.ref))
     await Promise.all(deletePromises)
     
-    return NextResponse.json({ deleted: querySnapshot.size })
+    return NextResponse.json({ 
+      message: `Cleaned up ${querySnapshot.docs.length} expired shares` 
+    })
   } catch (error) {
+    console.error('Cleanup error:', error)
     return NextResponse.json({ error: 'Cleanup failed' }, { status: 500 })
   }
 }

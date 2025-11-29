@@ -125,12 +125,14 @@ export default function ShareForm() {
       {/* Header */}
       <div className="p-6 pb-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-gray-900">FastShare</h1>
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900">Create Share</h2>
+            <p className="text-gray-600 text-sm mt-1">Files up to 10MB • Auto-delete after 24 hours</p>
+          </div>
           <Link href="/how-it-works" className="text-gray-400 hover:text-gray-600 transition-colors" aria-label="How it works">
             <HelpCircle size={20} />
           </Link>
         </div>
-        <p className="text-gray-600 mt-1">Share files up to 10MB and text instantly with secure temporary links</p>
       </div>
       
       {/* Tabs */}

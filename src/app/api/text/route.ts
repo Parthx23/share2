@@ -33,6 +33,7 @@ export async function POST(request: NextRequest) {
       url: `${request.nextUrl.origin}/${token}`
     })
   } catch (error) {
+    console.error('Text save error:', error)
     return NextResponse.json({ error: 'Save failed' }, { status: 500 })
   }
 }

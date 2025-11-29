@@ -19,10 +19,11 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-gray-50 py-8 px-4">
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
         <div className="max-w-4xl mx-auto space-y-8">
-          <header>
-            <h1 className="sr-only">FastShare - Instant File and Text Sharing</h1>
+          <header className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">FastShare</h1>
+            <p className="text-lg text-gray-600">Instant file and text sharing with temporary links</p>
           </header>
           <ShareForm />
           <WebRTCShare />

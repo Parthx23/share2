@@ -26,23 +26,14 @@ export default function SharePage({ params }: { params: { token: string } }) {
   }
   
   const downloadFile = () => {
-    if (share?.type === 'file' && share.fileData) {
-      const byteCharacters = atob(share.fileData)
-      const byteNumbers = new Array(byteCharacters.length)
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i)
-      }
-      const byteArray = new Uint8Array(byteNumbers)
-      const blob = new Blob([byteArray], { type: share.fileType || 'application/octet-stream' })
-      
-      const url = URL.createObjectURL(blob)
+    if (share?.type === 'file' && share.downloadURL) {
       const a = document.createElement('a')
-      a.href = url
+      a.href = share.downloadURL
       a.download = share.filename || 'shared-file'
+      a.target = '_blank'
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
-      URL.revokeObjectURL(url)
     }
   }
   

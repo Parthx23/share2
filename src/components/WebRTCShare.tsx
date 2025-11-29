@@ -71,14 +71,20 @@ export default function WebRTCShare() {
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg border border-gray-200 p-6">
-      <div className="flex items-center gap-2 mb-4">
-        <Wifi className="text-blue-600" size={24} />
-        <h2 className="text-xl font-bold">Real-time Share</h2>
+    <div className="w-full max-w-3xl mx-auto bg-white rounded-lg shadow-lg border border-gray-200">
+      <div className="p-6 pb-4 border-b border-gray-200">
+        <div className="flex items-center gap-2">
+          <Wifi className="text-blue-600" size={24} />
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900">Real-time Share</h2>
+            <p className="text-gray-600 text-sm mt-1">Direct peer-to-peer connection for instant sharing</p>
+          </div>
+        </div>
       </div>
 
-      {!roomId ? (
-        <div className="space-y-4">
+      <div className="p-6">
+        {!roomId ? (
+          <div className="space-y-4">
           <button
             onClick={generateRoomId}
             className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
@@ -102,9 +108,9 @@ export default function WebRTCShare() {
               Join
             </button>
           </div>
-        </div>
-      ) : (
-        <div className="space-y-4">
+          </div>
+        ) : (
+          <div className="space-y-4">
           <div className="flex items-center gap-2 p-3 bg-blue-50 rounded-md">
             <span className="font-medium">Room ID:</span>
             <code className="flex-1 font-mono">{roomId}</code>
@@ -149,8 +155,9 @@ export default function WebRTCShare() {
               </div>
             </>
           )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
